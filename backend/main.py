@@ -30,10 +30,16 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware - allow all origins for development
+# CORS middleware
+cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:3001").split(",")
+# Add Netlify URL if provided
+netlify_url = os.getenv("NETLIFY_URL")
+if netlify_url:
+    cors_origins.append(netlify_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify exact origins
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
