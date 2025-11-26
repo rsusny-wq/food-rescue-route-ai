@@ -16,7 +16,7 @@ Netlify shows "Page not found" because Next.js needs special configuration on Ne
    - `CORS_ORIGINS=https://your-netlify-site.netlify.app`
 7. Copy your Railway URL (e.g., `https://food-rescue-api.railway.app`)
 
-### Step 2: Fix Netlify Configuration (2 min)
+### Step 3: Fix Netlify Configuration (2 min)
 1. In Netlify dashboard → Your site → "Site settings"
 2. Go to "Plugins" → "Add plugin"
 3. Search: `@netlify/plugin-nextjs` → Install
@@ -28,7 +28,7 @@ Netlify shows "Page not found" because Next.js needs special configuration on Ne
    - Add: `NEXT_PUBLIC_API_URL` = `https://your-railway-url.railway.app`
 6. Click "Deploy site" → "Trigger deploy" → "Clear cache and deploy"
 
-### Step 3: Update Backend CORS (1 min)
+### Step 4: Update Backend CORS (1 min)
 1. In Railway dashboard → Your service → "Variables"
 2. Add: `CORS_ORIGINS` = `https://your-netlify-site.netlify.app`
 3. Service will auto-redeploy
