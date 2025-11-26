@@ -1,13 +1,19 @@
 [build]
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
 
-# Next.js rewrites
+# Next.js requires special handling
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirects for Next.js routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
